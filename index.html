@@ -1,181 +1,332 @@
+
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BRR Table (Sortable)</title>
-
-  <style>
-    table.sortable {
-      border-collapse: collapse;
-      width: 100%;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    table.sortable caption {
-      text-align: left;
-      font-weight: 700;
-      margin: 0 0 0.5rem 0;
-    }
-    table.sortable th, table.sortable td {
-      border: 1px solid #ddd;
-      padding: 8px 10px;
-      vertical-align: top;
-    }
-    table.sortable thead th {
-      position: sticky;
-      top: 0;
-      background: #f6f6f6;
-      cursor: pointer;
-      user-select: none;
-      white-space: nowrap;
-    }
-    table.sortable thead th:focus {
-      outline: 2px solid #666;
-      outline-offset: 2px;
-    }
-    table.sortable tbody tr:nth-child(even) { background: #fafafa; }
-    .sort-indicator { margin-left: 6px; font-size: 0.9em; }
-  </style>
+<meta charset="utf-8">
+<title>BRR Table</title>
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+th {
+  cursor: pointer;
+  background: #f4f4f4;
+}
+</style>
 </head>
-
 <body>
-  <table id="brrTable" class="sortable">
-    <caption>BRR (Sortable)</caption>
-    <thead>
-      <tr>
-        <th onclick="sortTable('brrTable',0)" role="button" tabindex="0">Restaurant Name <span class="sort-indicator" aria-hidden="true">↕</span></th>
-        <th onclick="sortTable('brrTable',1)" role="button" tabindex="0">Quick Note about Restaurant <span class="sort-indicator" aria-hidden="true">↕</span></th>
-        <th onclick="sortTable('brrTable',2)" role="button" tabindex="0">Rating <span class="sort-indicator" aria-hidden="true">↕</span></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>Osaka</td><td>Great Ramen &amp; Sushi wasn't worth it</td><td>7.0</td></tr>
-      <tr><td>Centro</td><td></td><td>6.0</td></tr>
-      <tr><td>Cup of Peace</td><td>Good Bulgogi - medium spice</td><td>8.0</td></tr>
-      <tr><td>Tasuki</td><td>Good sushi, decent prices.</td><td>9.0</td></tr>
-      <tr><td>Basta ( [pizza)</td><td>Great pizza and pasta</td><td>10.0</td></tr>
-      <tr><td>Taste of India</td><td>Bomb, great spice, great butter chicken and tikka masala</td><td>9.0</td></tr>
-      <tr><td>Bourbon House Pizza</td><td>Really good chicken ceaser wrap and pizza</td><td>8.0</td></tr>
-      <tr><td>Tokyo Joes</td><td>Good, simple fast food sushi</td><td>6.0</td></tr>
-      <tr><td>Chick-fil-A</td><td></td><td>7.0</td></tr>
-      <tr><td>Freddy's</td><td>Can&#39;t go wrong with Freddy&#39;s</td><td>8.0</td></tr>
-      <tr><td>Backstreet</td><td>Tasty wraps and fries</td><td>8.0</td></tr>
-      <tr><td>Serrano&#39;s Coffee</td><td>Avocado toast and coffee/tea</td><td>7.0</td></tr>
-      <tr><td>Hunan Chinese</td><td>Basic chinese, decent chicken and rice</td><td>6.0</td></tr>
-      <tr><td>Nepal Oven</td><td>Good. medium spice still pretty spicy. Butter chicken and tika masala good, but garlic nann wasn&#39;t.</td><td>7.0</td></tr>
-      <tr><td>Los Dos Potrillos</td><td>Really good mexican food. green chili and salsa were spicy and delicous. Great fajitas and enchillada!</td><td>9.0</td></tr>
-      <tr><td>Young&#39;s Cafe</td><td>Basic american food, cheap burgers and sandwiches</td><td>7.0</td></tr>
-      <tr><td>GO Fish Japanese</td><td>Cheap and tasty sushi</td><td>9.0</td></tr>
-      <tr><td>Taco star</td><td>Cheap, tasty mexican food</td><td>8.0</td></tr>
-      <tr><td>Hash Tag</td><td>Overpriced and mediocre food - hashbrowns are ok.</td><td>5.0</td></tr>
-      <tr><td>Hungry Wolf BBQ</td><td>Solid BBQ, try the brisket. Great sides. decent price. Good spicy BBQ sauce.</td><td>8.0</td></tr>
-      <tr><td>Drake&#39;s Place</td><td>Absolutely incredible. Great burgers, great shakes. Great price.</td><td>9.0</td></tr>
-      <tr><td>Roadhouse 29</td><td>Really great burgers, decent fries, good beer. Open late.</td><td>8.0</td></tr>
-      <tr><td>Sonic</td><td>Tasty sugary drinks, ok fast food, slushies are ok.</td><td>6.0</td></tr>
-      <tr><td>The Garlic Knot</td><td>Good pizza and tasty breadsticks. Affordable</td><td>8.0</td></tr>
-      <tr><td>Big Belly Deli</td><td>Good sandwiches and salads, somewhat expensive</td><td>7.0</td></tr>
-      <tr><td>East Coast Deli</td><td>Amazing! Great subs, italian is fantastic. Great price.</td><td>9.0</td></tr>
-      <tr><td>Chick-fil-A (colordado)</td><td></td><td>7.0</td></tr>
-      <tr><td>Tofu House Korean</td><td>Good soup and bibimbap. Somewhat expensive</td><td>8.0</td></tr>
-      <tr><td>Papas and Beers</td><td>Good Mexican food. It&#39;s pricy but portion sizes are big. Chips and salsa are good. Green Chili is great. Baja tacos were fantastic.</td><td>8.0</td></tr>
-      <tr><td>Thai Monkey Club</td><td>Solid thai food. curry and spring rolls are very good</td><td>8.0</td></tr>
-      <tr><td>McDonald&#39;s</td><td></td><td>6.0</td></tr>
-      <tr><td>Chipotle</td><td></td><td>6.0</td></tr>
-      <tr><td>McDonald&#39;s</td><td>Basic fast food. McChicken and fries are good. Drinks are not.</td><td>6.0</td></tr>
-      <tr><td>Gotta Go Burrito</td><td>Solid burritos and tacos for a great price. Great queso.</td><td>8.0</td></tr>
-      <tr><td>Subway</td><td></td><td>5.0</td></tr>
-      <tr><td>Crave Burger</td><td>Expensive but amazing burgers and fries. Great shakes</td><td>8.0</td></tr>
-      <tr><td>Qdoba</td><td>Solid. Queso is great. Burritos and bowls are good.</td><td>7.0</td></tr>
-      <tr><td>Little Caesars</td><td>Cheap pizza. It&#39;s fine.</td><td>6.0</td></tr>
-      <tr><td>East Coast Deli</td><td>New location. Still amazing. Italian, tuna, chicken bacon ranch are all great. Great fries too.</td><td>9.0</td></tr>
-      <tr><td>The Office Bar and Grill</td><td>Really good burgers, ok fries. Great price.</td><td>8.0</td></tr>
-      <tr><td>Nekter Juice Bar</td><td>Solid smoothies and bowls, somewhat expensive</td><td>8.0</td></tr>
-      <tr><td>One and Only Burger</td><td>Solid burger and fries. Great price.</td><td>8.0</td></tr>
-      <tr><td>Wingstop</td><td>Good wings, somewhat expensive</td><td>7.0</td></tr>
-      <tr><td>In N Out</td><td>Solid. burger and fries. Great price.</td><td>8.0</td></tr>
-      <tr><td>Birdcall</td><td>Good chicken sandwiches and fries. Somewhat expensive</td><td>7.0</td></tr>
-      <tr><td>Jimmy John&#39;s</td><td>Good sandwiches. Somewhat expensive.</td><td>7.0</td></tr>
-      <tr><td>Wendy&#39;s</td><td>Good cheap burgers. Frosties are very good.</td><td>7.0</td></tr>
-      <tr><td>Angry Chicken</td><td>Really good chicken sandwiches and wings. Great fries.</td><td>8.0</td></tr>
-      <tr><td>Arbys</td><td></td><td>6.0</td></tr>
-      <tr><td>Park Burger</td><td>Really good burgers and fries. Somewhat expensive.</td><td>8.0</td></tr>
-      <tr><td>Jersey Mikes</td><td>Really good subs. Somewhat expensive but worth it.</td><td>8.0</td></tr>
-      <tr><td>Dairy Queen</td><td>Solid, cheap food and great ice cream.</td><td>7.0</td></tr>
-    </tbody>
-  </table>
 
-  <script>
-    function sortTable(tableId, colIndex) {
-      const table = document.getElementById(tableId);
-      const tbody = table.tBodies[0];
-      const rows = Array.from(tbody.querySelectorAll("tr"));
-      const ths = Array.from(table.tHead.rows[0].cells);
+<table class="dataframe sortable" id="brrTable">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Restaurant Name</th>
+      <th>Quick Note about Restaurant</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Osaka</td>
+      <td>Great Ramen &amp; Sushi wasn't worth it</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <td>Centro</td>
+      <td>-</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <td>Cup of Peace</td>
+      <td>Good Bulgogi - medium spice</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <td>Tasuki</td>
+      <td>Good sushi, decent prices.</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <td>Basta ( [pizza)</td>
+      <td>Great pizza and pasta</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <td>24 Carrot</td>
+      <td>Fancy. Great Fish and Great lamb. Good wines and homemade sodas.</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <td>Busaba (Thai)</td>
+      <td>-</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <td>Parkway Café (brunch)</td>
+      <td>Good Breakfast. Near Toyota on Pearl. Good for groups. Don’t get the biscuits.</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <td>Flower Pepper (Chinese)</td>
+      <td>Real Chinese - no fried food</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <td>Gold Hill Inn</td>
+      <td>Restaurant in the mountains. Great loaf of bread. Live music. Good vibes.</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <td>Community in Layfette</td>
+      <td>Good pasta and short rib grilled cheese. Margarita was good too. Limited menu though</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <td>Tiffins (Indian)</td>
+      <td>Decent.</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <td>Boulder Social</td>
+      <td>Prime Rib sandwich 10\n Fig pizza 8</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <td>Proto</td>
+      <td>Ultimate pizza - 8 \nThe Atomica - 8\nCabernet was good.</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <td>Crosscut Pizzeria and Taphouse - Nederland</td>
+      <td>-</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <td>Birdhouse</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Santo (New Mexican)</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Pupusa</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Tibet Kitchen</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Tierra ya Fuego</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Bramble &amp; Hare (farm to table)</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Arabesque (Middle Eastern)</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Blackbelly/Oak (American)</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Cafe Aion (Spanish)</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Il Pastio (Italian)</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>AOI Sushi</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>William Olivers</td>
+      <td>All pork. Good. Smaller portions.</td>
+      <td>6.5</td>
+    </tr>
+    <tr>
+      <td>Greenbrair Inn</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Café Blue</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Rincon</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Frasca</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>China Gourmet</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Cherrys Cheesecake</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>The Flatts on 93</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Japango</td>
+      <td>Little pricey but delicious</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <td>West Side Tavern</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Stella’s</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Barchetta</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Fringe</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Scrooge Maki</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Hao Way Chinese Cafe</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Izakaya</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Sushi Hana</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Wayne’s BBQ</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Ajax</td>
+      <td>Good Food. Good Setting.</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <td>Mister Oso</td>
+      <td>Ceviche fish, two hard tacos. Too many make your own tacos. I don’t want to make my own taco</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <td>Five spice - Chinese</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Blackjack Pizza</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Barchetta Pizza</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Audrey Jane’s Pizza</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Lucky Pie (Lousville)</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Flatz Restaurant &amp; Lounge</td>
+      <td>Super basic brunch, terrible bloody</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
 
-      // Toggle direction
-      const currentDir = table.getAttribute("data-sort-dir") || "asc";
-      const currentCol = parseInt(table.getAttribute("data-sort-col") || "-1", 10);
-      const dir = (currentCol === colIndex && currentDir === "asc") ? "desc" : "asc";
-      table.setAttribute("data-sort-dir", dir);
-      table.setAttribute("data-sort-col", String(colIndex));
+<script>
+function isNumeric(n) {
+  return !is-(parseFloat(n)) && isFinite(n);
+}
 
-      // Update indicators
-      ths.forEach((th, i) => {
-        th.setAttribute("aria-sort", "none");
-        const ind = th.querySelector(".sort-indicator");
-        if (ind) ind.textContent = "↕";
-        if (i === colIndex) {
-          th.setAttribute("aria-sort", dir === "asc" ? "ascending" : "descending");
-          if (ind) ind.textContent = dir === "asc" ? "↑" : "↓";
-        }
-      });
+document.addEventListener("DOMContentLoaded", function() {
+  const table = document.getElementById("brrTable");
+  const headers = table.querySelectorAll("th");
 
-      const getCellText = (row) => row.cells[colIndex]?.textContent.trim() ?? "";
-      const isNumeric = (value) => value !== "" && !isNaN(value) && isFinite(value);
-
-      // Determine if column is mostly numeric (sample-based)
-      const sample = rows.slice(0, Math.min(rows.length, 25)).map(getCellText);
-      const numericCount = sample.filter(isNumeric).length;
-      const treatNumeric = numericCount > sample.length / 2;
-
-      const multiplier = dir === "asc" ? 1 : -1;
+  headers.forEach((header, colIndex) => {
+    header.addEventListener("click", () => {
+      const rows = Array.from(table.querySelectorAll("tbody tr"));
+      const asc = header.classList.toggle("asc");
+      header.classList.toggle("desc", !asc);
 
       rows.sort((a, b) => {
-        const A = getCellText(a);
-        const B = getCellText(b);
+        const A = a.children[colIndex].innerText.trim();
+        const B = b.children[colIndex].innerText.trim();
 
-        if (treatNumeric) {
-          const aValid = isNumeric(A);
-          const bValid = isNumeric(B);
-
-          // Put blanks/non-numerics at the bottom
-          if (!aValid && !bValid) return 0;
-          if (!aValid) return 1;
-          if (!bValid) return -1;
-
-          const aNum = parseFloat(A);
-          const bNum = parseFloat(B);
-          if (aNum < bNum) return -1 * multiplier;
-          if (aNum > bNum) return 1 * multiplier;
-          return 0;
-        } else {
-          return A.localeCompare(B, undefined, { numeric: true, sensitivity: "base" }) * multiplier;
+        if (isNumeric(A) && isNumeric(B)) {
+          return asc ? A - B : B - A;
         }
+        return asc
+          ? A.localeCompare(B, undefined, {numeric: true, sensitivity: "base"})
+          : B.localeCompare(A, undefined, {numeric: true, sensitivity: "base"});
       });
 
-      rows.forEach(r => tbody.appendChild(r));
-    }
-
-    // Keyboard support (Enter/Space on header)
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll("table.sortable thead th[role='button']").forEach(th => {
-        th.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            th.click();
-          }
-        });
-      });
+      rows.forEach(row => table.querySelector("tbody").appendChild(row));
     });
-  </script>
+  });
+});
+</script>
+
 </body>
 </html>
+ 
