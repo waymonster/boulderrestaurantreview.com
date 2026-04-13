@@ -390,13 +390,40 @@ Hapa Sushi</a></td>
   </tbody>
 </table>
 
+
+<table class="dataframe sortable">
+  <thead>
+    <tr>
+      <th>Restaurant Name</th>
+      <th>Quick Note about Restaurant</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> <a href="https://fishnbeerdenver.com/" target="_blank" rel="noopener">
+Fish and Beer [Denver]</a></td>
+      <td>Awesome Ceviche. Good smoked fish dip. Happy hour till 630 with good deals.</td>
+      <td>9</td>
+    </tr>
+        <tr>
+      <td> <a href="https://fishnbeerdenver.com/" target="_blank" rel="noopener">
+Fish and Beer [Denver]</a></td>
+      <td>Awesome Ceviche. Good smoked fish dip. Happy hour till 630 with good deals.</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+  
 <script>
 function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  const table = document.getElementById("brrTable");
+const tables = document.querySelectorAll(".sortable");
+
+tables.forEach(table => {
   const headers = table.querySelectorAll("th");
 
   headers.forEach((header, colIndex) => {
